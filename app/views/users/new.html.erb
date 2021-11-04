@@ -1,0 +1,57 @@
+<%
+=begin%>
+  
+    <form action="/users" method="post" >
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label for="username">Username</label>
+        <input type="text" name="user[username]"><br><br>
+
+        <label for="email">Email</label>
+        <input type="email" name= "user[email]"><br><br>
+
+        <label for="password">Password</label>
+        <input type="password" name="user[password]"> <br><br>
+
+        <input type="submit" value="Submit">
+
+    </form> 
+<%
+=end%>
+
+<%
+=begin%>
+<%= form_tag( '/users' , remote: true) do |f| %>
+    <%= label_tag "username", "Username" %>
+    <%= text_field_tag (:username) %><br><br>
+
+    <%= label_tag "email", "Email" %>
+    <%= email_field_tag (:email) %><br><br>
+
+    <%= label_tag "password", "Password" %>
+    <%= password_field_tag (:password) %><br><br>
+
+    <%= submit_tag "Submit" %>
+<% end %>
+
+<%
+=end%>
+
+
+<%= form_with model: @user do |f|%>
+    <div>
+        <%= f.label :username, "Username:"%>
+        <%= f.text_field :username, placeholder: "Your username" %>
+    </div>
+
+    <div>
+        <%= f.label :email, "Email:" %>
+        <%= f.email_field :email, placeholder: "youremail@domain.com"%>
+    </div>
+
+    <div>
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password, placeholder: "********"%>
+    </div>
+
+    <%= f.submit "Submit", disable_with: 'Submiting...' %>
+<% end %>

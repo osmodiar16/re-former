@@ -1,0 +1,22 @@
+<%= form_with model: @user do |f|%>
+
+    <div>
+        <%= @user.errors.full_messages.first %>
+    </div>
+    <div>
+        <%= f.label :username, "Username:"%>
+        <%= f.text_field :username, placeholder: "Your username" %>
+    </div>
+
+    <div>
+        <%= f.label :email, "Email:" %>
+        <%= f.email_field :email, placeholder: "youremail@domain.com"%>
+    </div>
+
+    <div>
+        <%= f.label :password, "Password:" %>
+        <%= f.password_field :password, placeholder: "********"%>
+    </div>
+
+    <%= f.submit "Submit", disable_with: 'Submiting...' %>
+<% end %>
